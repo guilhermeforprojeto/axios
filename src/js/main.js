@@ -44,10 +44,20 @@ const put = () => {
 }
 
 const patch = () => {
+
+    const data = {
+        
+        title: 'Laranja',
+    }
+    // diferença é que por convenção o PUT atualiza tudo e o PATCH apenas uma linha
+    axios.patch('https://jsonplaceholder.typicode.com/posts/1', data)
+    .then((response) => renderOutput(response))
     console.log('patch');
 }
 
 const del = () => {
+    axios.delete('https://jsonplaceholder.typicode.com/posts/2', data)
+    .then((response) => renderOutput(response))
     console.log('delete');
 }
 
