@@ -20,6 +20,7 @@ const get = () => {
 const post = () => {
     
     const data = {
+        
         title: 'foo',
         body: 'bar',
         userId: 1,
@@ -31,6 +32,14 @@ const post = () => {
 }
 
 const put = () => {
+    const data = {
+        
+        title: 'Lara',
+        body: 'bar',
+        userId: 1,
+    }
+    axios.put('https://jsonplaceholder.typicode.com/posts/1', data)
+    .then((response) => renderOutput(response))
     console.log('put');
 }
 
