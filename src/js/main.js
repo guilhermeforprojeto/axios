@@ -88,7 +88,7 @@ const transform = () => {
             return payload;
         }]
     }
-    //Dessa forma a requisição vem pronta visto que dentro de config tem os parammetros 
+    //Dessa forma a requisição vem pronta visto que dentro de config tem os parammetros  
     axios.get('https://jsonplaceholder.typicode.com/posts?', config)
         .then((response) => renderOutput(response))
 }
