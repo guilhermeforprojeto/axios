@@ -62,7 +62,7 @@ const del = () => {
 }
 
 const multiple = () => {
-    Promise.all([
+    Promise.all( [
         axios.get('https://jsonplaceholder.typicode.com/posts?limit=5'),
         axios.get('https://jsonplaceholder.typicode.com/users?limit=5')
     ]).then((response) => {
@@ -73,7 +73,24 @@ const multiple = () => {
 }
 
 const transform = () => {
-    console.log('transform');
+    const config = {
+        params: {
+            _limit: 5
+        },
+        // Faz o que quiser para transformar os dados
+        transformResponse: [function (data) {
+            const payload = JSON.parse(data).map(o => {
+                return {
+                    title: o.title,
+                    body: o.body,
+                }            
+            })
+            return payload;
+        }]
+    }
+    //Dessa forma a requisição vem pronta visto que dentro de config tem os parammetros 
+    axios.get('https://jsonplaceholder.typicode.com/posts?', config)
+        .then((response) => renderOutput(response))
 }
 
 const errorHandling = () => {
